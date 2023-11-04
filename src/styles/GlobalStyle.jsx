@@ -6,14 +6,23 @@ const GlobalStyle = createGlobalStyle`
     --main-color : #FDE989;
   }
 
+  * {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  
   body {
     margin: 0;
-    font-family: 'Noto Sans', sans-serif;
   }
   
   h1, h2, h3, p {
     margin: 0;
     padding: 0;
+  }
+
+  p + p {
+    margin-top: 16px;
   }
 
   ul {
