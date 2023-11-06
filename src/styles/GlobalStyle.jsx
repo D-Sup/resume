@@ -21,6 +21,12 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
+  button {
+    border: 0;
+    background-color: initial;
+    padding: 0;
+  }
+
   p + p {
     margin-top: 16px;
   }
