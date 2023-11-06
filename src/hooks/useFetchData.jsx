@@ -22,38 +22,31 @@ export default function useFetchData(dirname) {
   });
 
   const handleDataDispatch = (file, parsedData) => {
-    dispatch({
-      type: "LOADING",
-      file: file,
-      parseData: parsedData
-    });
+    setTimeout(() => {
+      dispatch({
+        type: "LOADING",
+        file: file,
+        parseData: parsedData
+      });
+    }, 700)
   }
 
-  const refetchData = async () => {
+  const fetchData = async () => {
     dispatch({ type: "REQUEST_FILE" });
     try {
-      const newFile = await dataController.getFiles(dirname);
-      const newParsedData = DataParser(newFile);
-      handleDataDispatch(newFile, newParsedData);
+      const file = await dataController.getFiles(dirname);
+      const parsedData = DataParser(file);
+      handleDataDispatch(file, parsedData);
     } catch (error) {
       console.error("파일 가져오기 오류:", error);
     }
-  }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      dispatch({ type: "REQUEST_FILE" });
-      try {
-        const file = await dataController.getFiles(dirname);
-        const parsedData = DataParser(file);
-        handleDataDispatch(file, parsedData);
-      } catch (error) {
-        console.error("파일 가져오기 오류:", error);
-      }
-    };
-
     fetchData();
   }, [dirname]);
+
+  const refetchData = fetchData;
 
   return { file, parseData, isLoading, refetchData };
 }
