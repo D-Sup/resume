@@ -12,10 +12,10 @@ export default function Skills({ data }) {
         <div className="child-2">
           <TagArea>
           {
-            lang.split(', ').map(item => (
+            lang.split(', ').map((item, index) => (
               item === "JavaScript" || item === "React" ?
-              <span className="skill-tag active">{item}</span> :
-              <span className="skill-tag">{item}</span>
+              <span key={index} className="skill-tag active">{item}</span> :
+              <span key={index} className="skill-tag">{item}</span>
             ))
           }
           </TagArea>

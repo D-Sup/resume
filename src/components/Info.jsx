@@ -11,13 +11,13 @@ export default function Info({ data }) {
   return (
     <section>
       <LayoutStyle />
-      
+
       <H1>{name}</H1>
 
       <Separator>
         <p>{profession}</p>
       </Separator>
-      
+
       <ContactInfoArea className="grid-container">
         <div className="child-1">
           <ul>
@@ -50,6 +50,9 @@ const H1 = styled.h1`
   font-size: 4rem;
   line-height: 1;
   font-weight: 100;
+  @media (max-width: 950px) {
+    font-size: 3rem;
+  }
 
   &:before {
     content: "";
@@ -65,36 +68,45 @@ const H1 = styled.h1`
 `;
 
 const Separator = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
   @media (max-width: 950px) {
     align-items: start;
     flex-direction: column;
   }
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
 
   p {
     font-size: 1.5rem;
     font-weight: 100;
   }
   &:after {
+    @media (max-width: 950px) {
+      flex: none;
+      margin-left: 0;
+      margin-top: 10px;
+    }
     margin-left: 20px;
     content: "";
     flex: 1;
     width: 100%;
     height: 2px;
     background-color: #D2D2D0;
-    @media (max-width: 950px) {
-      flex: none;
-      margin-left: 0;
-      margin-top: 10px;
-    }
   }
 `
 
 const ContactInfoArea = styled.div`
   align-items: center;
-
+  @media (max-width: 1100px) {
+    grid-template-columns: none;
+  }
+  
+  .child-2 {
+    @media (max-width: 1100px) {
+      padding-left: 30px;
+      margin-top: 30px;
+    }
+  }
   .icon {
     width: 25px;
     height: 25px;
@@ -116,11 +128,6 @@ const ContactInfoArea = styled.div`
   }
   a:visited {
     color: #000;
-  }
-  .child-2 {
-    @media (max-width: 950px) {
-      margin-top: 30px;
-    }
   }
   .gh-chart {
     width: 100%;

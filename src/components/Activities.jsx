@@ -4,11 +4,8 @@ import styled from "styled-components"
 import iconGithub from "../assets/icon/icon-github.svg"
 import iconDeploy from "../assets/icon/icon-deploy.svg"
 
-
 export default function Activities({ data, categoryName }) {
-  // const { date, RepoLink, deployLink, tag, content, projectType } = data
 
-  console.log(data);
   return (
     <section>
       <div className="grid-container">
@@ -18,16 +15,16 @@ export default function Activities({ data, categoryName }) {
         </div>
 
         <ContentArea className="child-2">
-          {data.map((item, index) => {
+          {data.map(item => {
             return (
-              <div className="grid-container content" key={index}>
+              <div className="grid-container content">
                 <span className="project-type">{item.projectType}</span>
                 <div className="child-1 date-link-tag">
-                  <time datetime={item.date}>{item.date}</time>
-                  {item.RepoLink &&
+                  <time dateTime={item.date}>{item.date}</time>
+                  {item.repoLink &&
                       <div>
                         <span>LINK :</span>
-                        <a target="_blank" href={item.RepoLink}><img src={iconGithub} /></a>
+                        <a target="_blank" href={item.repoLink}><img src={iconGithub} /></a>
                         <a target="_blank" href={item.deployLink}><img src={iconDeploy} /></a>
                       </div>
                   }
