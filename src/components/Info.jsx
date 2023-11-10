@@ -100,11 +100,14 @@ const ContactInfoArea = styled.div`
   @media (max-width: 1100px) {
     grid-template-columns: none;
   }
-  
+
   .child-2 {
     @media (max-width: 1100px) {
       padding-left: 30px;
       margin-top: 30px;
+    }
+    @media (max-width: 950px) {
+      padding-left: 0;
     }
   }
   .icon {
