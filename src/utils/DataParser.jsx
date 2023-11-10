@@ -5,8 +5,9 @@ export default function DataParser(text) {
   let currentObj = {};
 
   function isListKey(key) {
-    return key === "Experience" || key === "Project";
+    return key === "Projects" || key === "Experience" || key === "Education" || key === "Completion";
   }
+
 
   for (let line of lines) {
 
