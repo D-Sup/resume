@@ -20,13 +20,13 @@ export default function Activities({ data, categoryName }) {
               <div className="grid-container content">
                 <span className="project-type">{item.projectType}</span>
                 <div className="child-1 date-link-tag">
-                  <time dateTime={item.date}>{item.date}</time>
+                  <time className={!item.repoLink && "only-time"} dateTime={item.date}>{item.date}</time>
                   {item.repoLink &&
-                      <div>
-                        <span>LINK :</span>
-                        <a target="_blank" href={item.repoLink}><img src={iconGithub} /></a>
-                        <a target="_blank" href={item.deployLink}><img src={iconDeploy} /></a>
-                      </div>
+                    <div>
+                      <span>LINK :</span>
+                      <a target="_blank" href={item.repoLink}><img src={iconGithub} /></a>
+                      <a target="_blank" href={item.deployLink}><img src={iconDeploy} /></a>
+                    </div>
                   }
                   <div className="tag-container">
                     {
@@ -57,7 +57,6 @@ const ContentArea = styled.div`
   .content {
     position: relative;
   }
-
   .content:first-child{
     margin-top: 30px;
   }
@@ -87,6 +86,11 @@ const ContentArea = styled.div`
   }
   time {
     margin-bottom: 10px;
+  }
+  .only-time {
+    @media (max-width: 950px) {
+      margin-bottom: -20px;
+    }
   }
   .date-link-tag {
     padding: 0;
