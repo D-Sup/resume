@@ -11,7 +11,6 @@ import Activities from "./components/Activities";
 import Skills from "./components/Skills";
 import EditDataPage from "./components/EditDataPage";
 import Loader from "./components/common/Loader";
-import { makePdf } from "./utils/makePdf";
 
 function App() {
 
@@ -26,19 +25,10 @@ function App() {
   if (isLoading) {
     return <Loader />
   }
-const pdf = makePdf();
-
-const handleDownload = async () => {
-  pdf.viewWithPdf();
-};
-
-  
-
 
   return (
     <WrapperStyle className="wrapper-style">
       <GlobalStyle />
-      <DownloadButton onClick={handleDownload}>다운로드</DownloadButton>
       <Header fileData={fileData} isEditPage={isEditPage} setIsEditPage={setIsEditPage} refetchData={refetchData}/>
       {isEditPage ? (
         <EditDataPage fileData={fileData} setFileData={setFileData}/>
@@ -62,15 +52,6 @@ const handleDownload = async () => {
 }
 
 export default App;
-
-const DownloadButton = styled.button`
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-`;
 
 const WrapperStyle = styled.div`
   margin: 30px auto;
