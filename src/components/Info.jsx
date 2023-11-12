@@ -125,14 +125,24 @@ const ContactInfoArea = styled.div`
   a {
     font-weight: 100;
     line-height: 1.8;
-    padding-left: 10px;
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
     font-size: .9rem;
     color: #000;
+    transition: .3s;
+    &:hover {
+      background-color: #F0F0F0;
+    }
   }
   a:visited {
     color: #000;
   }
   .gh-chart {
     width: 100%;
+    transition: .3s;
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 `;

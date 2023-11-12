@@ -44,17 +44,25 @@ const TagArea = styled.div`
     content: "";
     width: 100%;
     height: 2px;
-    background-color: #000;
+    background-color: #D2D2D0;
   }
   .skill-tag {
     display: inline-block;
     border-radius: 30px;
-    border: 2px solid #000;
-    font-size: .9rem;
-    padding: 4px 8px;
+    border: 2px solid #D2D2D0;
+    font-size: 1rem;
+    padding: 10px 15px 8px;
     box-sizing: border-box;
-    margin-right: 5px;
-    margin-bottom: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    line-height: 1;
+    transition: .3s;
+    &:hover {
+      border: 2px solid #F99417;
+      background-color: #F99417;
+      color: #FFF;
+      transform: scale(1.1);
+    }
   }
   .active {
     color: #FFF;
