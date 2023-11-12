@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
+  li + li {
+    margin-top: 8px;
+  }
+
   button {
     border: 0;
     background-color: initial;
