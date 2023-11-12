@@ -101,20 +101,19 @@ const ContentArea = styled.div`
     }
     a {
       margin-left: 15px; 
+      transition: .3s;
+      border-radius: 30px;
+      outline: 2px solid #FFF;
+      padding: 5px;
+      &:hover {
+        outline: 2px solid #000;
+        transform: scale(.9);
+      }
     }
   }
   img {
-    padding: 5px;
-    border-radius: 30px;
-    overflow: visible;    
     width: 25px;
     height: 25px;
-    transition: .3s;
-    outline: 2px solid #FFF;
-    &:hover {
-      outline: 2px solid #000;
-      transform: scale(.9);
-    }
   }
   .tag-container {
     @media (max-width: 950px) {

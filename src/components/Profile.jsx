@@ -53,6 +53,7 @@ const IntroduceArea = styled.div`
     width: 150px;
     height: 150px;
     object-fit: cover;
+    object-position: center -12px;
     border-radius: 50%;
   }
 `;
