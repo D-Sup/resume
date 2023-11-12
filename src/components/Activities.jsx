@@ -22,7 +22,7 @@ export default function Activities({ data, categoryName }) {
                 <div className="child-1 date-link-tag">
                   <time className={!item.repoLink && "only-time"} dateTime={item.date}>{item.date}</time>
                   {item.repoLink &&
-                    <div>
+                    <div className="link">
                       <span>LINK :</span>
                       <a target="_blank" href={item.repoLink}><img src={iconGithub} /></a>
                       <a target="_blank" href={item.deployLink}><img src={iconDeploy} /></a>
@@ -84,9 +84,6 @@ const ContentArea = styled.div`
     height: 2px;
     background-color: #000;
   }
-  time {
-    margin-bottom: 10px;
-  }
   .only-time {
     @media (max-width: 950px) {
       margin-bottom: -20px;
@@ -94,6 +91,9 @@ const ContentArea = styled.div`
   }
   .date-link-tag {
     padding: 0;
+  }
+  .link {
+    margin: 10px 0;
   }
   img {
     padding-left: 15px; 
@@ -106,9 +106,9 @@ const ContentArea = styled.div`
       width: 100%;
       margin-top: 10px;
     }
-    width: 25%;
+    /* width: 25%;
     position: absolute;
-    bottom: 16px;
+    bottom: 16px; */
   }
   .skill-tag {
     display: inline-block;
