@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   * {
-    font-family: 'Noto Sans', sans-serif;
+    /* font-family: 'Pretendard', sans-serif; */
     font-weight: 400;
     line-height: 1.4;
   }

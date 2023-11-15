@@ -79,6 +79,7 @@ const Separator = styled.div`
   p {
     font-size: 1.5rem;
     font-weight: 100;
+    margin: 0;
   }
   &:after {
     @media (max-width: 950px) {
