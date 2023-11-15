@@ -25,7 +25,7 @@ export default function Activities({ data, categoryName }) {
                     <div className="link">
                       <span>LINK :</span>
                       <a target="_blank" href={item.repoLink}><img src={iconGithub} /></a>
-                      <a target="_blank" href={item.deployLink}><img src={iconDeploy} /></a>
+                      {item.deployLink && <a target="_blank" href={item.deployLink}><img src={iconDeploy} /></a>}
                     </div>
                   }
                   <div className="tag-container">

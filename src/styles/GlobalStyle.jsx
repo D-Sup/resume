@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-  p + p {
+  p {
     margin-top: 16px;
   }
 
