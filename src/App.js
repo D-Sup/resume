@@ -29,7 +29,7 @@ function App() {
   return (
     <WrapperStyle className="wrapper-style">
       <GlobalStyle />
-      {/* <Header fileData={fileData} isEditPage={isEditPage} setIsEditPage={setIsEditPage} refetchData={refetchData}/> */}
+      <Header fileData={fileData} isEditPage={isEditPage} setIsEditPage={setIsEditPage} refetchData={refetchData}/>
       {isEditPage ? (
         <EditDataPage fileData={fileData} setFileData={setFileData}/>
       ) : (
