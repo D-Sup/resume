@@ -29,8 +29,7 @@ function App() {
   return (
     <WrapperStyle className="wrapper-style">
       <GlobalStyle />
-      {/* <Header fileData={fileData} isEditPage={isEditPage} setIsEditPage={setIsEditPage} refetchData={refetchData}/> */}
-      <header>이력서 링크 : <a target="_blank" href="https://resume-dongsupahn.vercel.app">https://resume-dongsupahn.vercel.app</a></header>
+      <Header fileData={fileData} isEditPage={isEditPage} setIsEditPage={setIsEditPage} refetchData={refetchData}/>
       {isEditPage ? (
         <EditDataPage fileData={fileData} setFileData={setFileData}/>
       ) : (
@@ -55,12 +54,6 @@ function App() {
 export default App;
 
 const WrapperStyle = styled.div`
-
-  header {
-    margin: auto;
-    text-align: center;
-    font-size: 1.5rem;
-  }
   margin: 30px auto;
   padding: 80px;
   max-width: 1200px;
