@@ -106,6 +106,7 @@ const ContentArea = styled.div`
       outline: 2px solid #FFF;
       padding: 5px;
       &:hover {
+        background-color: #FFF;
         outline: 2px solid #000;
         transform: scale(.9);
       }

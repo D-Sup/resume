@@ -22,13 +22,11 @@ export default function useFetchData(dirname) {
   });
 
   const handleDataDispatch = (file, parsedData) => {
-    setTimeout(() => {
-      dispatch({
-        type: "LOADING",
-        file: file,
-        parseData: parsedData
-      });
-    }, 700)
+    dispatch({
+      type: "LOADING",
+      file: file,
+      parseData: parsedData
+    });
   }
 
   const fetchData = async () => {

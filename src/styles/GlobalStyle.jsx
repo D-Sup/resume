@@ -21,8 +21,16 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
+  h3:last-of-type {
+    margin-bottom: 16px;
+  }
+
   li + li {
-    margin-top: 8px;
+    margin-top: 14px;
+  }
+
+  ul li ul li {
+    margin-top: 7px;
   }
 
   button {
@@ -42,6 +50,17 @@ const GlobalStyle = createGlobalStyle`
   u, a {
     text-decoration: underline;
     text-underline-offset: 0.1em; 
+  }
+  
+  a {
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    transition: .3s;
+  }
+
+  a:hover {
+    background-color: #F0F0F0;
   }
 
   a:visited {
