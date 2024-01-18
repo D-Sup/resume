@@ -112,7 +112,11 @@ const SliderContainer = styled.div`
     aspect-ratio: 2 / 1;
     height: 100%;
     object-fit: cover;
+    @media (max-width: 673px) {
+      object-fit: contain;
+    }
   }
+
 `;
 
 const PreviewContainer = styled.div`
