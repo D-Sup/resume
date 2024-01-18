@@ -5,6 +5,7 @@ import Modal from "./Modal";
 
 import iconGithub from "../assets/icon/icon-github.svg"
 import iconDeploy from "../assets/icon/icon-deploy.svg"
+import iconSmallExpansion from "../assets/icon/icon-s-expansion.svg"
 import iconExpansion from "../assets/icon/icon-expansion.svg"
 
 export default function Activities({ data, categoryName, setModalState }) {
@@ -17,14 +18,14 @@ export default function Activities({ data, categoryName, setModalState }) {
           <h2>{categoryName}</h2>
         </div>
 
-        <ContentArea className="child-2">
+        <ContentArea className="child-2" iconSmallExpansion={iconSmallExpansion} iconExpansion={iconExpansion}>
           {data.map(item => {
             return (
               <div className="grid-container content">
                 <span className="project-type">{item.projectType}</span>
                 {item.images &&
                   <button className="expand-btn" onClick={() => { setModalState({ isModalOpen: true, imageTitle: item.imageTitle, images: item.images }) }}>
-                    <img src={iconExpansion} />
+                    <div className="expansion-icon" />
                   </button>
                 }
                 <div className="child-1 date-link-tag">
@@ -155,36 +156,70 @@ const ContentArea = styled.div`
   }
 
   @keyframes glowing {
-  0% {
-    opacity: 0.3;
+    0% {
+      opacity: 0.1;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.1;
+    }
   }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.3;
-  }
-}
 
-.expand-btn {
+  .expand-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: #F99417;
     cursor: pointer;
     position: absolute;
-    right: -40px;
+    right: -90px;
     top: -5px;
     transition: .3s;
-    outline: 2px solid #FFF;
-    padding: 5px;
+    outline: 2px solid #F99417;
     box-sizing: border-box;
-    animation: glowing 3s ease-in-out infinite;
-    img {
-    width: 20px;
-    height: 20px;
-  }
+    &:before {
+      content: "details ";
+    }
+    
+    @media (max-width: 1220px) {
+      outline: 2px solid #FFF;
+      animation: glowing 3s ease-in-out infinite;
+      border-radius: 0;
+      padding: 5px 5px 5px 0;
+      box-sizing: border-box;
+      right: -35px;
+      top: -5px;
+      &:before{
+        content: "";
+      }
+    }
+    .expansion-icon {
+      background: url(${({ iconSmallExpansion }) => iconSmallExpansion}) no-repeat 100% / 100%;
+      width: 10px; 
+      height: 10px; 
+      @media (max-width: 1220px) {
+        background: url(${({ iconExpansion }) => iconExpansion}) no-repeat 100% / 100%;
+        width: 20px; 
+        height: 20px; 
+      } 
+    }
   }
   .expand-btn:hover {
-    background-color: #FFF;
-    outline: 2px solid #000;
-    transform: scale(.9);
-    animation: none;
+    box-shadow: 3px -3px 1px 2px #F99417;
+    top: 0px;
+    right: -87px;
+    @media (max-width: 1220px) {
+      top: -5px;
+      right: -35px;
+      box-shadow: none;
+      outline: 2px solid #000;
+      transform: scale(.9);
+      animation: none;
+    } 
   }
 `;
