@@ -22,12 +22,24 @@ export default function Modal({ modalState, setModalState }) {
             <div class="slider-box-container" style={{ transform: `translateX(${-slideIndex * 100}%)` }}>
               {images.map((image, index) =>
                 <div className="slider-box">
-                  <ImageLoader
-                    key={index}
-                    src={image}
-                    LoadingComponent={Loader}
-                  />
+                  {image.includes("youtube.com") ?
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/${image.split("?v=")[1]}?autoplay=1&mute=1&loop=1&playlist=${image.split("?v=")[1]}`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen>
+                    </iframe>
+                    :
+                    <ImageLoader
+                      key={index}
+                      src={image}
+                      LoadingComponent={Loader}
+                    />
+                  }
                 </div>
+
               )}
             </div>
             <span class="slider-title">{imageTitle[slideIndex]}</span>
@@ -40,7 +52,7 @@ export default function Modal({ modalState, setModalState }) {
               >
                 <ImageLoader
                   key={index}
-                  src={image}
+                  src={image.includes("youtube.com") ? `https://img.youtube.com/vi/${image.split("?v=")[1]}/maxresdefault.jpg` : image}
                   LoadingComponent={Loader}
                 />
               </button>
@@ -110,7 +122,7 @@ const ModalContainer = styled.div`
   .prev-btn, 
   .next-btn {
     width: 100px;
-    height: 100%;
+    height: 70%;
     position: absolute;
     top: 50%;
     opacity: 0.7;
@@ -158,6 +170,7 @@ const SliderContainer = styled.div`
     }
   }
   .slider-title {
+    pointer-events: none;
     position: absolute;
     bottom: 10px;
     left: 10px;
