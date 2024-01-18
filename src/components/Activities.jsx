@@ -173,7 +173,7 @@ const ContentArea = styled.div`
     justify-content: center;
     gap: 5px;
     padding: 5px 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     color: #F99417;
     cursor: pointer;
     position: absolute;
