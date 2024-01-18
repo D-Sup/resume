@@ -11,12 +11,14 @@ import Activities from "./components/Activities";
 import Skills from "./components/Skills";
 import EditDataPage from "./components/EditDataPage";
 import Loader from "./components/common/Loader";
+import Modal from "./components/Modal";
 
 function App() {
 
   const { file, parseData, isLoading, refetchData } = useFetchData("resume");
   const [isEditPage, setIsEditPage] = useState(false);
   const [fileData, setFileData] = useState("");
+  const [modalState, setModalState] = useState({ isModalOpen: false, modalContent: "" });
 
   useEffect(() => {
     setFileData(file)
@@ -29,9 +31,9 @@ function App() {
   return (
     <WrapperStyle className="wrapper-style">
       <GlobalStyle />
-      <Header fileData={fileData} isEditPage={isEditPage} setIsEditPage={setIsEditPage} refetchData={refetchData}/>
+      <Header fileData={fileData} isEditPage={isEditPage} setIsEditPage={setIsEditPage} refetchData={refetchData} />
       {isEditPage ? (
-        <EditDataPage fileData={fileData} setFileData={setFileData}/>
+        <EditDataPage fileData={fileData} setFileData={setFileData} />
       ) : (
         <>
           <Info data={parseData.info} />
@@ -41,12 +43,13 @@ function App() {
               if (item === "Skills") {
                 return <Skills key={index} data={parseData[item]} />
               } else {
-                return <Activities key={index} data={parseData[item]} categoryName={item} />
+                return <Activities key={index} data={parseData[item]} categoryName={item} setModalState={setModalState} />
               }
             })
           }
         </>
       )}
+      <Modal modalState={modalState} setModalState={setModalState} />
     </WrapperStyle>
   );
 }

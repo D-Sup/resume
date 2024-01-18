@@ -1,10 +1,13 @@
 import Markdown from "../utils/Markdown";
 import styled from "styled-components"
 
+import Modal from "./Modal";
+
 import iconGithub from "../assets/icon/icon-github.svg"
 import iconDeploy from "../assets/icon/icon-deploy.svg"
+import iconExpansion from "../assets/icon/icon-expansion.svg"
 
-export default function Activities({ data, categoryName }) {
+export default function Activities({ data, categoryName, setModalState }) {
 
   return (
     <section>
@@ -19,6 +22,11 @@ export default function Activities({ data, categoryName }) {
             return (
               <div className="grid-container content">
                 <span className="project-type">{item.projectType}</span>
+                {item.images &&
+                  <button className="expand-btn" onClick={() => { setModalState({ isModalOpen: true, modalContent: item.images }) }}>
+                    <img src={iconExpansion} />
+                  </button>
+                }
                 <div className="child-1 date-link-tag">
                   <time className={!item.repoLink && "only-time"} dateTime={item.date}>{item.date}</time>
                   {item.repoLink &&
@@ -120,11 +128,7 @@ const ContentArea = styled.div`
     @media (max-width: 950px) {
       position: static;
       width: 100%;
-      /* margin-top: 10px; */
     }
-    /* width: 25%;
-    position: absolute;
-    bottom: 16px; */
   }
   .skill-tag {
     display: inline-block;
@@ -148,5 +152,39 @@ const ContentArea = styled.div`
     position: absolute;
     right: 0;
     top: 0;
+  }
+
+  @keyframes glowing {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+.expand-btn {
+    cursor: pointer;
+    position: absolute;
+    right: -40px;
+    top: -5px;
+    transition: .3s;
+    outline: 2px solid #FFF;
+    padding: 5px;
+    box-sizing: border-box;
+    animation: glowing 3s ease-in-out infinite;
+    img {
+    width: 20px;
+    height: 20px;
+  }
+  }
+  .expand-btn:hover {
+    background-color: #FFF;
+    outline: 2px solid #000;
+    transform: scale(.9);
+    animation: none;
   }
 `;
