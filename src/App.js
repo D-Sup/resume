@@ -18,7 +18,7 @@ function App() {
   const { file, parseData, isLoading, refetchData } = useFetchData("resume");
   const [isEditPage, setIsEditPage] = useState(false);
   const [fileData, setFileData] = useState("");
-  const [modalState, setModalState] = useState({ isModalOpen: false, modalContent: "" });
+  const [modalState, setModalState] = useState({ isModalOpen: false, imageTitle: "", images: "" });
 
   useEffect(() => {
     setFileData(file)

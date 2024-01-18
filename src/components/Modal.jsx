@@ -1,12 +1,16 @@
 import { useState } from "react"
 import styled from "styled-components"
 
+import Loader from "./common/Loader"
+
 import iconArrow from "../assets/icon/icon-arrow.svg"
 import iconCancel from "../assets/icon/icon-cancel.svg"
 
+
 export default function Modal({ modalState, setModalState }) {
   const [slideIndex, setSlideIndex] = useState(0)
-  const modalContent = modalState.modalContent.split(", ") || false;
+  const images = modalState.images.split(", ");
+  const imageTitle = modalState.imageTitle.split(", ");
 
   return (
     <>
@@ -16,26 +20,44 @@ export default function Modal({ modalState, setModalState }) {
         <ModalContainer isModalOpen={modalState.isModalOpen}>
           <SliderContainer>
             <div class="slider-box-container" style={{ transform: `translateX(${-slideIndex * 100}%)` }}>
-              {modalContent.map(image =>
-                <img className="slider-box" src={image} />
+              {images.map((image, index) =>
+                <div className="slider-box">
+                  <ImageLoader
+                    key={index}
+                    src={image}
+                    LoadingComponent={Loader}
+                  />
+                </div>
               )}
             </div>
+            <span class="slider-title">{imageTitle[slideIndex]}</span>
           </SliderContainer>
           <PreviewContainer>
-            {modalContent.map((image, index) =>
-              <button className="preview-box"
+            {images.map((image, index) =>
+              <button className="preview-box" key={index}
                 onClick={() => { setSlideIndex(index) }}
-                style={{ boxShadow: slideIndex === index ? "0px 3px #F99417" : "none" }}
-              ><img src={image}></img></button>
+                style={{ boxShadow: slideIndex === index ? "0 -3px #F99417" : "none" }}
+              >
+                <ImageLoader
+                  key={index}
+                  src={image}
+                  LoadingComponent={Loader}
+                />
+              </button>
+
             )}
           </PreviewContainer>
-          <button className="prev-btn" onClick={() => { setSlideIndex(slideIndex === 0 ? modalContent.length - 1 : slideIndex - 1) }}>
+          <button className="prev-btn" onClick={() => { setSlideIndex(slideIndex === 0 ? images.length - 1 : slideIndex - 1) }}>
             <img src={iconArrow} />
           </button>
-          <button className="next-btn" onClick={() => { setSlideIndex(slideIndex === modalContent.length - 1 ? 0 : slideIndex + 1) }}>
+          <button className="next-btn" onClick={() => { setSlideIndex(slideIndex === images.length - 1 ? 0 : slideIndex + 1) }}>
             <img src={iconArrow} />
           </button>
-          <button className="cancel-btn" onClick={() => { setModalState({ isModalOpen: false, modalContent: modalState.modalContent }) }}>
+          <button className="cancel-btn"
+            onClick={() => {
+              setModalState({ isModalOpen: false, imageTitle: modalState.imageTitle, images: modalState.images })
+              setTimeout(() => setSlideIndex(0), 300)
+            }}>
             <img src={iconCancel} />
           </button>
         </ModalContainer>
@@ -43,6 +65,19 @@ export default function Modal({ modalState, setModalState }) {
     </>
   )
 }
+
+const ImageLoader = ({ src, LoadingComponent, ...rest }) => {
+  const [loading, setLoading] = useState(true);
+
+  return (
+    <>
+      {loading &&
+        <LoadingComponent />
+      }
+      <img style={loading ? { display: 'none' } : {}} src={src} onLoad={() => setLoading(false)} {...rest} />
+    </>
+  );
+};
 
 const BlurArea = styled.div`
   opacity: 0;
@@ -111,12 +146,26 @@ const SliderContainer = styled.div`
     max-width: 100vw;
     aspect-ratio: 2 / 1;
     height: 100%;
+    position: relative;
     object-fit: cover;
-    @media (max-width: 673px) {
-      object-fit: contain;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      @media (max-width: 673px) {
+        object-fit: contain;
+      } 
     }
   }
-
+  .slider-title {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, .3);
+    color: #FFF;
+  }
 `;
 
 const PreviewContainer = styled.div`
@@ -131,9 +180,10 @@ const PreviewContainer = styled.div`
   gap: 20px;
 
   .preview-box {
+    position: relative;
     height: 100px;
     aspect-ratio: 2 / 1;
-    margin-bottom: 3px;
+    margin-top: 3px;
     img {
       width: 100%;
       height: 100%;

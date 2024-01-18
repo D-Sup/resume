@@ -23,7 +23,7 @@ export default function Activities({ data, categoryName, setModalState }) {
               <div className="grid-container content">
                 <span className="project-type">{item.projectType}</span>
                 {item.images &&
-                  <button className="expand-btn" onClick={() => { setModalState({ isModalOpen: true, modalContent: item.images }) }}>
+                  <button className="expand-btn" onClick={() => { setModalState({ isModalOpen: true, imageTitle: item.imageTitle, images: item.images }) }}>
                     <img src={iconExpansion} />
                   </button>
                 }
