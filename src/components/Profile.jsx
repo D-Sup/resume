@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import Markdown from "../utils/Markdown";
 
-import profileImage from "../assets/images/profile-img.png"
+import profileImage from "../assets/images/profile-img.jpeg"
 
 export default function Profile({ data }) {
   const { introduction } = data
