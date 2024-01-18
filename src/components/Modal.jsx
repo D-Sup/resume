@@ -134,7 +134,7 @@ const SliderContainer = styled.div`
   overflow: hidden;
   max-width: 100vw;
   height: 60vh;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 16 / 9;
   
   .slider-box-container {
     max-width: 100vw;
@@ -144,7 +144,7 @@ const SliderContainer = styled.div`
   }
   .slider-box {
     max-width: 100vw;
-    aspect-ratio: 2 / 1;
+    aspect-ratio: 16 / 9;
     height: 100%;
     position: relative;
     object-fit: cover;
@@ -152,7 +152,7 @@ const SliderContainer = styled.div`
       width: 100%;
       height: 100%;
       object-fit: cover;
-      @media (max-width: 673px) {
+      @media (max-width: 962px) {
         object-fit: contain;
       } 
     }
@@ -182,7 +182,7 @@ const PreviewContainer = styled.div`
   .preview-box {
     position: relative;
     height: 100px;
-    aspect-ratio: 2 / 1;
+    aspect-ratio: 16 / 9;
     margin-top: 3px;
     img {
       width: 100%;

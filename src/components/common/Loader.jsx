@@ -15,15 +15,17 @@ const LoaderStyle = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
+  width: 50%;
+  aspect-ratio: 1 / 1;
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
 
 
   .ball {
     list-style: none;
-    width: 30px;
-    height: 30px;
+    width: 5%;
+    height: 5%;
     border-radius: 50%;
     background-color: #000;
     @media (max-width: 950px) {
