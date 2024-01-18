@@ -1,4 +1,4 @@
-class DataController {
+class DataHandler {
   constructor() {
     this.BASE_URL = process.env.REACT_APP_BASE_URL;
     this.END_POINT = process.env.REACT_APP_END_POINT;
@@ -49,6 +49,6 @@ class DataController {
   }
 }
 
-const dataController = new DataController();
+const dataHandler = new DataHandler();
 
-export default dataController;
+export default dataHandler;

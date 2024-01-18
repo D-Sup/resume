@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from "react";
-import dataController from "../api/dataController";
+import dataHandler from "../api/dataHandler";
 import DataParser from "../utils/DataParser";
 
 function mdFileReducer(state, action) {
@@ -32,7 +32,7 @@ export default function useFetchData(dirname) {
   const fetchData = async () => {
     dispatch({ type: "REQUEST_FILE" });
     try {
-      const file = await dataController.getFiles(dirname);
+      const file = await dataHandler.getFiles(dirname);
       const parsedData = DataParser(file);
       handleDataDispatch(file, parsedData);
     } catch (error) {

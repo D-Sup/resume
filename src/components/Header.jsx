@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 
-import dataController from "../api/dataController"
+import dataHandler from "../api/dataHandler"
 import PwInput from "./common/PwInput"
 
 import textResume from "../assets/icon/text-resume.svg"
@@ -17,13 +17,13 @@ export default function Header({ fileData, isEditPage, setIsEditPage, refetchDat
 
   const handleBtn = async () => {
     !isEditPage && setIsKeyBtn(true);
-    if(isKeyBtn && pw === PASSWORD) {
+    if (isKeyBtn && pw === PASSWORD) {
       setPw("");
       setIsKeyBtn(false)
       setIsEditPage(Prev => !Prev);
-    } 
+    }
     if (isEditPage) {
-      await dataController.putFile('resume', fileData)
+      await dataHandler.putFile('resume', fileData)
       refetchData();
       setIsEditPage(Prev => !Prev);
     }
@@ -32,11 +32,11 @@ export default function Header({ fileData, isEditPage, setIsEditPage, refetchDat
   return (
     <HeaderStyle>
       <div className="container">
-      <img className="title" src={textResume} />
-      <button onClick={handleBtn}>
-      <img className="edit-btn" src={ !isEditPage ? isKeyBtn ? iconKey : iconEdit : iconCheck } />
-      </button>
-      <PwInput isKeyBtn={isKeyBtn} pw={pw} setPw={setPw}/>
+        <img className="title" src={textResume} />
+        <button onClick={handleBtn}>
+          <img className="edit-btn" src={!isEditPage ? isKeyBtn ? iconKey : iconEdit : iconCheck} />
+        </button>
+        <PwInput isKeyBtn={isKeyBtn} pw={pw} setPw={setPw} />
       </div>
     </HeaderStyle>
   )
