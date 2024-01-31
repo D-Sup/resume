@@ -24,7 +24,7 @@ export default function Info({ data }) {
         >
           <span style={{
             display: 'block'
-          }}>👇🏻 PDF보다 웹사이트를 방문하셔서 읽어주시기를 권장드립니다
+          }}>👇🏻 직접 웹사이트를 방문하셔서 읽어주시기를 권장드립니다!
           </span>
           <a href="https://resume-dongsupahn.vercel.app/">https://resume-dongsupahn.vercel.app </a>
         </div>
