@@ -1,3 +1,5 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 import useFetchData from "./hooks/useFetchData";
 
@@ -29,6 +31,7 @@ function App() {
   }
 
   return (
+
     <WrapperStyle className="wrapper-style">
       <GlobalStyle />
       <Header fileData={fileData} isEditPage={isEditPage} setIsEditPage={setIsEditPage} refetchData={refetchData} />
@@ -36,7 +39,13 @@ function App() {
         <EditDataPage fileData={fileData} setFileData={setFileData} />
       ) : (
         <>
-          <Info data={parseData.info} />
+
+          <Router>
+            <Routes>
+              <Route path='/*' element={<Info data={parseData.info} />} />
+            </Routes>
+          </Router>
+
           <Profile data={parseData.Profile} />
           {
             parseData.sequence.index.split(' - ').map((item, index) => {

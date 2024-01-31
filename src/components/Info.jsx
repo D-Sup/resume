@@ -1,3 +1,5 @@
+import { useLocation } from "react-router-dom";
+
 import styled from "styled-components";
 import LayoutStyle from "../styles/LayoutStyle";
 
@@ -8,9 +10,25 @@ import iconEmail from "../assets/icon/icon-email.svg"
 export default function Info({ data }) {
   const { name, profession, githubLink, blogLink, emailLink } = data;
 
+  const location = useLocation();
+
   return (
     <section>
       <LayoutStyle />
+      {location.pathname === "/rinkforpdf" &&
+        <div
+          style={{
+            fontSize: '30px',
+            marginBottom: '60px'
+          }}
+        >
+          <span style={{
+            display: 'block'
+          }}>👇🏻 PDF보다 웹사이트를 방문하셔서 읽어주시기를 권장드립니다
+          </span>
+          <a href="https://resume-dongsupahn.vercel.app/">https://resume-dongsupahn.vercel.app </a>
+        </div>
+      }
 
       <H1>{name}</H1>
 
@@ -58,7 +76,7 @@ const H1 = styled.h1`
     content: "";
     position: absolute;
     background-color: var(--main-color);
-    transform: translate(-51%, -58%);
+    transform: translate(-51%, -51%);
     top: 50%;
     left: 50%;
     width: 93%;
