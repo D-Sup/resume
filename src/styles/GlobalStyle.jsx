@@ -5,9 +5,10 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --main-color : #FDE989;
   }
+  
 
   * {
-    /* font-family: 'Pretendard', sans-serif; */
+    font-family: 'Pretendard', sans-serif;
     font-weight: 400;
     line-height: 1.4;
   }
