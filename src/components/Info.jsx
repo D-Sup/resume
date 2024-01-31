@@ -15,7 +15,7 @@ export default function Info({ data }) {
   return (
     <section>
       <LayoutStyle />
-      {location.pathname === "/rinkforpdf" &&
+      {location.pathname === "/linkforpdf" &&
         <div
           style={{
             fontSize: '30px',
