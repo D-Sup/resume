@@ -1,8 +1,6 @@
 import Markdown from "../utils/Markdown";
 import styled from "styled-components"
 
-import Modal from "./Modal";
-
 import iconGithub from "../assets/icon/icon-github.svg"
 import iconDeploy from "../assets/icon/icon-deploy.svg"
 import iconSmallExpansion from "../assets/icon/icon-s-expansion.svg"

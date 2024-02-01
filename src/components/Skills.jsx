@@ -1,7 +1,7 @@
+import Markdown from "../utils/Markdown";
 import styled from "styled-components"
 
 export default function Skills({ data }) {
-  const { lang } = data
 
   return (
     <Section>
@@ -11,13 +11,18 @@ export default function Skills({ data }) {
         </div>
         <div className="child-2">
           <TagArea>
-          {
-            lang.split(', ').map((item, index) => (
-              item === "JavaScript" || item === "React" ?
-              <span key={index} className="skill-tag active">{item}</span> :
-              <span key={index} className="skill-tag">{item}</span>
-            ))
-          }
+            {
+              data.map((item, index) => (
+                <>
+                  {item.lang === "JavaScript" || item.lang === "React" ?
+                    <span key={index} className="skill-tag active">{item.lang}</span> :
+                    <span key={index} className="skill-tag">{item.lang}</span>}
+                  <Markdown>
+                    {item.content}
+                  </Markdown>
+                </>
+              ))
+            }
           </TagArea>
         </div>
       </div>
@@ -53,8 +58,8 @@ const TagArea = styled.div`
     font-size: 1rem;
     padding: 10px 15px 8px;
     box-sizing: border-box;
+    margin-top: 25px;
     margin-right: 10px;
-    margin-bottom: 10px;
     line-height: 1;
     transition: .3s;
     &:hover {
@@ -62,6 +67,9 @@ const TagArea = styled.div`
       background-color: #F99417;
       color: #FFF;
       transform: scale(1.1);
+    }
+    &:first-child {
+      margin-top: 0
     }
   }
   .active {
