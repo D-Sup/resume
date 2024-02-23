@@ -14,7 +14,7 @@ export default function Skills({ data }) {
             {
               data.map((item, index) => (
                 <>
-                  {item.lang === "JavaScript & TypeScript" || item.lang === "React" ?
+                  {item.lang === "TypeScript & JavaScript" || item.lang === "React" ?
                     <span key={index} className="skill-tag active">{item.lang}</span> :
                     <span key={index} className="skill-tag">{item.lang}</span>}
                   <Markdown>
