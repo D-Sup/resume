@@ -67,7 +67,7 @@ export default function Modal({ modalState, setModalState }) {
           </button>
           <button className="cancel-btn"
             onClick={() => {
-              setModalState({ isModalOpen: false, imageTitle: modalState.imageTitle, images: modalState.images })
+              setModalState({ isModalOpen: false, imageTitle: "", images: "" })
               setTimeout(() => setSlideIndex(0), 300)
             }}>
             <img src={iconCancel} />
@@ -159,11 +159,11 @@ const SliderContainer = styled.div`
     aspect-ratio: 16 / 9;
     height: 100%;
     position: relative;
-    object-fit: cover;
+    object-fit: contain;
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       @media (max-width: 962px) {
         object-fit: contain;
       } 
@@ -200,7 +200,7 @@ const PreviewContainer = styled.div`
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
   }
 `;
