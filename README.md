@@ -57,7 +57,7 @@ class DataHandler {
         {
           method: "PUT",
           headers: {
-            'Content-Type': 'text/plain',
+            "Content-Type": "text/plain",
           },
           body: fileContent,
         }
@@ -155,9 +155,9 @@ export default function useFetchData(dirname) {
 
 ```js
 export default function DataParser(text) {
-  const lines = text.trim().split('\n');
+  const lines = text.trim().split("\n");
   const result = {};
-  let currentKey = '';
+  let currentKey = "";
   let currentObj = {};
 
   function isListKey(key) {
@@ -167,14 +167,14 @@ export default function DataParser(text) {
 
   for (let line of lines) {
 
-    if (line.startsWith('## ')) {
+    if (line.startsWith("## ")) {
       currentKey = line.substring(3);
       result[currentKey] = isListKey(currentKey) ? [] : {};
       currentObj = result[currentKey];
     }
 
-    else if (line.includes(' > ')) {
-      const [key, value] = line.split(' > ');
+    else if (line.includes(" > ")) {
+      const [key, value] = line.split(" > ");
       if (isListKey(currentKey)) {
         const lastIndex = currentObj.length - 1;
         currentObj[lastIndex] && !currentObj[lastIndex][key] ?
@@ -185,11 +185,11 @@ export default function DataParser(text) {
       }
     }
 
-    else if (line.startsWith('- ') || line.length > 0) {
+    else if (line.startsWith("- ") || line.length > 0) {
       if (isListKey(currentKey)) {
-        currentObj[currentObj.length - 1].content += line + '\n';
+        currentObj[currentObj.length - 1].content += line + "\n";
       } else {
-        currentObj.introduction += line + '\n';
+        currentObj.introduction += line + "\n";
       }
     }
   }
@@ -212,9 +212,9 @@ import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 
 export default function Markdown({ children }) {
-  const StringText = ({ children }) => <strong style={{ fontWeight: '700' }}>{children}</strong>
-  const ItalicText = ({ children }) => <em style={{ fontStyle: 'inherit' }}><u>{children}</u></em>;
-  const LinkText = ({ children, href }) => <a href={href} target="_blank" style={{ color: '#F99417' }}>{children}</a>;
+  const StringText = ({ children }) => <strong style={{ fontWeight: "700" }}>{children}</strong>
+  const ItalicText = ({ children }) => <em style={{ fontStyle: "inherit" }}><u>{children}</u></em>;
+  const LinkText = ({ children, href }) => <a href={href} target="_blank" style={{ color: "#F99417" }}>{children}</a>;
 
   const components = {
     strong: StringText,

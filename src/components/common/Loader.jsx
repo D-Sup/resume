@@ -3,9 +3,9 @@ import styled from "styled-components"
 export default function Loader() {
   return (
     <LoaderStyle>
-      <li class="ball"></li>
-      <li class="ball"></li>
-      <li class="ball"></li>
+      <li className="ball"></li>
+      <li className="ball"></li>
+      <li className="ball"></li>
     </LoaderStyle>
   )
 }
@@ -28,7 +28,7 @@ const LoaderStyle = styled.div`
     height: 5%;
     border-radius: 50%;
     background-color: #000;
-    @media (max-width: 950px) {
+    @media (max-width: 1100px) {
       width: 15px;
       height: 15px;
   }

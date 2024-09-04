@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import styled from "styled-components"
 
 import dataHandler from "../api/dataHandler"
@@ -23,7 +23,7 @@ export default function Header({ fileData, isEditPage, setIsEditPage, refetchDat
       setIsEditPage(Prev => !Prev);
     }
     if (isEditPage) {
-      await dataHandler.putFile('resume', fileData)
+      await dataHandler.putFile("resume", fileData)
       refetchData();
       setIsEditPage(Prev => !Prev);
     }
@@ -65,7 +65,7 @@ const HeaderStyle = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    @media (max-width: 950px) {
+    @media (max-width: 1100px) {
       padding: 40px;
     }
   }

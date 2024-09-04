@@ -7,7 +7,6 @@ import styled from "styled-components";
 import GlobalStyle from "./styles/GlobalStyle";
 
 import Header from "./components/Header";
-import Info from "./components/Info";
 import Profile from "./components/Profile";
 import Activities from "./components/Activities";
 import Skills from "./components/Skills";
@@ -42,13 +41,12 @@ function App() {
 
           <Router>
             <Routes>
-              <Route path='/*' element={<Info data={parseData.info} />} />
+              <Route path="/*" element={<Profile data={parseData.Profile} />} />
             </Routes>
           </Router>
 
-          <Profile data={parseData.Profile} />
           {
-            parseData.sequence.index.split(' - ').map((item, index) => {
+            parseData.sequence.index.split(" - ").map((item, index) => {
               if (item === "Skills") {
                 return <Skills key={index} data={parseData[item]} />
               } else {
@@ -72,7 +70,7 @@ const WrapperStyle = styled.div`
   box-sizing: border-box;
   width: auto;
 
-  @media (max-width: 950px) {
+  @media (max-width: 1100px) {
     padding: 40px;
   }
   section:nth-of-type(2) {

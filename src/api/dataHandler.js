@@ -32,7 +32,7 @@ class DataHandler {
         {
           method: "PUT", // PUT 요청으로 변경
           headers: {
-            'Content-Type': 'text/plain', // 업로드 파일의 Content-Type 설정
+            "Content-Type": "text/plain", // 업로드 파일의 Content-Type 설정
           },
           body: fileContent, // 요청 본문에 파일 내용 추가
         }

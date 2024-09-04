@@ -1,8 +1,6 @@
-import Markdown from "../utils/Markdown";
-import styled from "styled-components"
+import styled from "styled-components";
 
 export default function Skills({ data }) {
-
   return (
     <Section>
       <div className="grid-container">
@@ -12,22 +10,22 @@ export default function Skills({ data }) {
         <div className="child-2">
           <TagArea>
             {
-              data.map((item, index) => (
-                <>
-                  {item.lang === "TypeScript & JavaScript" || item.lang === "React" ?
-                    <span key={index} className="skill-tag active">{item.lang}</span> :
-                    <span key={index} className="skill-tag">{item.lang}</span>}
-                  <Markdown>
-                    {item.content}
-                  </Markdown>
-                </>
+              data.map((items, index) => (
+                <li className="skill" key={index}>
+                  <p className="skill-category">{items.category}</p>
+                  {items.tag?.split(", ").map((item, itemIndex) => (
+                    <span key={itemIndex} className={`skill-tag ${item.includes("*") ? "active" : ""}`}>
+                      {item.split("*").join("")}
+                    </span>
+                  ))}
+                </li>
               ))
             }
           </TagArea>
         </div>
       </div>
     </Section>
-  )
+  );
 }
 
 const Section = styled.section`
@@ -36,12 +34,12 @@ const Section = styled.section`
   }
   `;
 
-const TagArea = styled.div`
+const TagArea = styled.ul`
   padding-top: 30px;
   position: relative;
 
   &::before {
-    @media (max-width: 950px) {
+    @media (max-width: 1100px) {
       display: none;
     }
     position: absolute;
@@ -51,6 +49,13 @@ const TagArea = styled.div`
     height: 2px;
     background-color: #D2D2D0;
   }
+  .skill + .skill {
+    margin-top: 30px;
+  }
+  .skill-category {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
   .skill-tag {
     display: inline-block;
     border-radius: 30px;
@@ -58,7 +63,7 @@ const TagArea = styled.div`
     font-size: 1rem;
     padding: 10px 15px 8px;
     box-sizing: border-box;
-    margin-top: 25px;
+    margin-bottom: 10px;
     margin-right: 10px;
     line-height: 1;
     transition: .3s;
@@ -67,9 +72,6 @@ const TagArea = styled.div`
       background-color: #F99417;
       color: #FFF;
       transform: scale(1.1);
-    }
-    &:first-child {
-      margin-top: 0
     }
   }
   .active {

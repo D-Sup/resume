@@ -19,9 +19,9 @@ export default function Modal({ modalState, setModalState }) {
         </BlurArea>
         <ModalContainer isModalOpen={modalState.isModalOpen}>
           <SliderContainer>
-            <div class="slider-box-container" style={{ transform: `translateX(${-slideIndex * 100}%)` }}>
+            <div className="slider-box-container" style={{ transform: `translateX(${-slideIndex * 100}%)` }}>
               {images.map((image, index) =>
-                <div className="slider-box">
+                <div key={index} className="slider-box">
                   {image.includes("youtube.com") ?
                     <iframe
                       width="100%"
@@ -42,7 +42,7 @@ export default function Modal({ modalState, setModalState }) {
 
               )}
             </div>
-            <span class="slider-title">{imageTitle[slideIndex]}</span>
+            <span className="slider-title">{imageTitle[slideIndex]}</span>
           </SliderContainer>
           <PreviewContainer>
             {images.map((image, index) =>
@@ -86,7 +86,7 @@ const ImageLoader = ({ src, LoadingComponent, ...rest }) => {
       {loading &&
         <LoadingComponent />
       }
-      <img style={loading ? { display: 'none' } : {}} src={src} onLoad={() => setLoading(false)} {...rest} />
+      <img style={loading ? { display: "none" } : {}} src={src} onLoad={() => setLoading(false)} {...rest} />
     </>
   );
 };

@@ -14,7 +14,7 @@ export default function PwInput({ isKeyBtn, pw, setPw }) {
 
   return (
     <InputStyle>
-      <div className={`group ${isFocused ? 'focused' : ''} ${isKeyBtn ? 'on' : ''}`}>
+      <div className={`group ${isFocused ? "focused" : ""} ${isKeyBtn ? "on" : ""}`}>
         <svg stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="icon">
           <path d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" strokeLinejoin="round" strokeLinecap="round"></path>
         </svg>
@@ -35,7 +35,7 @@ export default function PwInput({ isKeyBtn, pw, setPw }) {
 const InputStyle = styled.div`
     position: absolute;
     right: 115px;
-    @media (max-width: 950px) {
+    @media (max-width: 1100px) {
       right: 75px;
     }
 

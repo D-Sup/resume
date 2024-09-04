@@ -19,7 +19,7 @@ const LayoutStyle = createGlobalStyle`
   }
 
   .grid-container {
-    @media (max-width: 950px) {
+    @media (max-width: 1100px) {
       grid-template-columns: none;
     }
     display: grid;
@@ -33,14 +33,14 @@ const LayoutStyle = createGlobalStyle`
   }
 
   .child-1 {
-    @media (max-width: 950px) {
+    @media (max-width: 1100px) {
       padding-left: 0;
     }
     padding-left: 30px;
   }
 
   .child-2 {
-    @media (max-width: 950px) {
+    @media (max-width: 1100px) {
       margin-top: 20px;
     }
   }

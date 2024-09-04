@@ -7,7 +7,6 @@ import iconSmallExpansion from "../assets/icon/icon-s-expansion.svg"
 import iconExpansion from "../assets/icon/icon-expansion.svg"
 
 export default function Activities({ data, categoryName, setModalState }) {
-
   return (
     <section>
       <div className="grid-container">
@@ -17,9 +16,9 @@ export default function Activities({ data, categoryName, setModalState }) {
         </div>
 
         <ContentArea className="child-2" iconSmallExpansion={iconSmallExpansion} iconExpansion={iconExpansion}>
-          {data.map(item => {
+          {data.map((item, index) => {
             return (
-              <div className="grid-container content">
+              <div key={index} className="grid-container content">
                 <span className="project-type">{item.projectType}</span>
                 {item.images &&
                   <button className="expand-btn" onClick={() => { setModalState({ isModalOpen: true, imageTitle: item.imageTitle, images: item.images }) }}>
@@ -27,7 +26,7 @@ export default function Activities({ data, categoryName, setModalState }) {
                   </button>
                 }
                 <div className="child-1 date-link-tag">
-                  <time className={!item.repoLink && "only-time"} dateTime={item.date}>{item.date}</time>
+                  <time className={!item.repoLink ? "only-time" : ""} dateTime={item.date}>{item.date}</time>
                   {item.repoLink &&
                     <div className="link">
                       <span>LINK :</span>
@@ -37,8 +36,8 @@ export default function Activities({ data, categoryName, setModalState }) {
                   }
                   <div className="tag-container">
                     {
-                      item.tag?.split(", ").map((item) => (
-                        <span className="skill-tag">{item}</span>
+                      item.tag?.split(", ").map((item, index) => (
+                        <span key={index} className="skill-tag">{item}</span>
                       ))
                     }
                   </div>
@@ -71,7 +70,7 @@ const ContentArea = styled.div`
     margin-top: 30px;
   }
   &::before {
-    @media (max-width: 950px) {
+    @media (max-width: 1100px) {
       display: none;
     }
     position: absolute;
@@ -81,7 +80,7 @@ const ContentArea = styled.div`
     background-color: #F99417;
   }
   &::after {
-    @media (max-width: 950px) {
+    @media (max-width: 1100px) {
       display: none;
     }
     position: absolute;
@@ -92,7 +91,7 @@ const ContentArea = styled.div`
     background-color: #D2D2D0;
   }
   .only-time {
-    @media (max-width: 950px) {
+    @media (max-width: 1100px) {
       margin-bottom: -10px;
     }
   }
@@ -124,7 +123,7 @@ const ContentArea = styled.div`
     height: 25px;
   }
   .tag-container {
-    @media (max-width: 950px) {
+    @media (max-width: 1100px) {
       position: static;
       width: 100%;
     }

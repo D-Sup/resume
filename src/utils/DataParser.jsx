@@ -1,7 +1,7 @@
 export default function DataParser(text) {
-  const lines = text.trim().split('\n');
+  const lines = text.trim().split("\n");
   const result = {};
-  let currentKey = '';
+  let currentKey = "";
   let currentObj = {};
 
   function isListKey(key) {
@@ -11,14 +11,14 @@ export default function DataParser(text) {
 
   for (let line of lines) {
 
-    if (line.startsWith('## ')) {
+    if (line.startsWith("## ")) {
       currentKey = line.substring(3);
       result[currentKey] = isListKey(currentKey) ? [] : {};
       currentObj = result[currentKey];
     }
 
-    else if (line.includes(' > ')) {
-      const [key, value] = line.split(' > ');
+    else if (line.includes(" > ")) {
+      const [key, value] = line.split(" > ");
       if (isListKey(currentKey)) {
         const lastIndex = currentObj.length - 1;
         currentObj[lastIndex] && !currentObj[lastIndex][key] ?
@@ -29,11 +29,11 @@ export default function DataParser(text) {
       }
     }
 
-    else if (line.startsWith('- ') || line.length > 0) {
+    else if (line.startsWith("- ") || line.length > 0) {
       if (isListKey(currentKey)) {
-        currentObj[currentObj.length - 1].content += line + '\n';
+        currentObj[currentObj.length - 1].content += line + "\n";
       } else {
-        currentObj.introduction += line + '\n';
+        currentObj.introduction += line + "\n";
       }
     }
   }
